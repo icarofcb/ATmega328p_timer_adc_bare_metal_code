@@ -3,4 +3,4 @@ This is a code for ADC readings with timers and serial printing, a non blocking 
 
 if you got here, feel free to use it as a helping hand :D
 
-everything has comments 
+I tried to comment everyline hope it helps
