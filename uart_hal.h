@@ -3,8 +3,8 @@
  *
  *			 dd/mm/yyyy
  *  Created: 10/18/2021 9:22:18 AM
- *  Author: Õcaro Fernando
- *	LinkedIn : https://www.linkedin.com/in/Ìcaro-fernando-46139919b/
+ *  Author: √çcaro Fernando
+ *	LinkedIn : https://www.linkedin.com/in/√≠caro-fernando-46139919b/
  *  GitHub   : https://github.com/icarofcb
  *
  */ 
@@ -35,8 +35,8 @@
 //===================// Function prototyping //===================//
 
 void USART_Init(unsigned int ubrr);
-void USART_Transmit(char data);
-void USART_SendString(char *data);
+void USART_Transmit(unsigned char data);
+void USART_SendString(unsigned char *data);
 void USART_SendInt(int16_t value);
 
 #endif /* UART_HAL_H_ */
