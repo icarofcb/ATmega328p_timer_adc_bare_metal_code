@@ -3,8 +3,8 @@
  *
  *			 dd/mm/yyyy
  *  Created: 10/18/2021 9:22:18 AM
- *  Author: Ícaro Fernando
- *	LinkedIn : https://www.linkedin.com/in/ícaro-fernando-46139919b/
+ *  Author: Ãcaro Fernando
+ *	LinkedIn : https://www.linkedin.com/in/Ã­caro-fernando-46139919b/
  *  GitHub   : https://github.com/icarofcb
  *
  */ 
@@ -24,12 +24,13 @@ void USART_Init(unsigned int ubrr)
 	UBRR0H = (unsigned char)(ubrr>>8);
 	UBRR0L = (unsigned char)ubrr;
 	/*Enable receiver and transmitter */
-	UCSR0B = (1<<RXEN0)|(1<<TXEN0);
+	UCSR0B = (0<<RXEN0)|(1<<TXEN0);
 	/* Set frame format: 8data, 2stop bit */
-	UCSR0C = (1<<USBS0)|(3<<UCSZ00);
+	//UCSR0C = (1<<USBS0)|(3<<UCSZ00);
+	UCSR0C = 0x06;
 }
 
-void USART_Transmit(char data)
+void USART_Transmit(unsigned char data)
 {
 	uart_tx_done = 0;
 	
@@ -43,19 +44,20 @@ void USART_Transmit(char data)
 	}
 }
 
-void USART_SendString(char *data)
+void USART_SendString(unsigned char *data)
 {
 	uint16_t i = 0;
-	do{
+	while(data[i] != 0)
+	{
 		USART_Transmit(data[i]);
 		i++;	
-	}while(data[i] != '\0');
-	USART_Transmit(data[i]);
+	}
+	//USART_Transmit(data[i]);
 }
 
 void USART_SendInt(int16_t value)
 {
 	char buf[50];
 	sprintf(buf,"%d",value);
-	USART_SendString(buf);
+	USART_SendString((uint8_t *)buf);
 }
